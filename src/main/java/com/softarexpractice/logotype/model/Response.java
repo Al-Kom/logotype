@@ -15,10 +15,6 @@ public class Response {
     private String content;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "field_id")
     private Field field;
 }

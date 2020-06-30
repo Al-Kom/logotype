@@ -39,8 +39,4 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true,
             fetch = FetchType.EAGER)
     private List<Field> fields;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true,
-            fetch = FetchType.EAGER)
-    private List<Response> responses;
 }
