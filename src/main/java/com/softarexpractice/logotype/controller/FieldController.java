@@ -29,7 +29,6 @@ public class FieldController {
                         @PathVariable String id) {
         Field field = service.findByIdAndUser(Long.parseLong(id), user);
         if (field == null) {
-            log.info("WARN: Field " + id + " is not found");
             throw new NotFoundException();
         }
         return field;
@@ -45,8 +44,6 @@ public class FieldController {
     public Field update(@AuthenticationPrincipal User user,
                         @RequestBody Field field) {
         if (service.findByIdAndUser(field.getId(), user) == null) {
-            log.info("WARN: Field " + field.getLabel() +
-                    " is forbidden for user-" + user.getId());
             throw new ForbiddenException();
         }
         return service.saveField(field);
@@ -57,7 +54,6 @@ public class FieldController {
                               @PathVariable String id) {
         Field field = service.findById(Long.parseLong(id));
         if (field == null) {
-            log.info("WARN: Field " + id + " is not found");
             throw new NotFoundException();
         }
         service.deleteById(field.getId());

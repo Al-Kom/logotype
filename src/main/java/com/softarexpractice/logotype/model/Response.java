@@ -1,5 +1,6 @@
 package com.softarexpractice.logotype.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "responses")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Response {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

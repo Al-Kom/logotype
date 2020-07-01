@@ -1,5 +1,6 @@
 package com.softarexpractice.logotype.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,7 +9,8 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "fields")
-public class Field {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Field{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

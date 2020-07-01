@@ -44,11 +44,8 @@ public class FieldService {
 
     public Field findByIdAndUser(Long id, User user) {
         Field field = findById(id);
-        log.info("input user id: " + user.getId() + ", found user id: "
-                + field.getUser().getId());
         if (field.getUser().getId().equals(user.getId()))
             return field;
-        log.info("return null field");
         return null;
     }
 }
