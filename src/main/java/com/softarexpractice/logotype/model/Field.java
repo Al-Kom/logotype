@@ -29,8 +29,4 @@ public class Field {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
-
-    @OneToMany(mappedBy = "field", cascade = CascadeType.ALL, orphanRemoval = true,
-            fetch = FetchType.EAGER)
-    private List<Response> responses;
 }
