@@ -3,12 +3,15 @@ package com.softarexpractice.logotype.service;
 import com.softarexpractice.logotype.model.User;
 import com.softarexpractice.logotype.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
     private UserRepository repository;
 
     @Autowired
@@ -30,5 +33,10 @@ public class UserService {
 
     public void deleteById(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return repository.findByEmail(email);
     }
 }
